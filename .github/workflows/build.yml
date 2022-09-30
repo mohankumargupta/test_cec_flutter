@@ -44,5 +44,4 @@ jobs:
           artifacts: "release.zip"
           body: ${{github.event.inputs.releasename}}
           tag: ${{github.event.inputs.releasename}}
-          commit: "main"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          commit: "master"          
