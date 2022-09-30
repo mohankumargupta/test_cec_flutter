@@ -11,6 +11,7 @@ jobs:
     name: Raspberry Pi aarch64 build
     steps:
       - uses: actions/checkout@v2.1.0
+        path: code
       - uses: uraimo/run-on-arch-action@v2
         name: Run commands
         id: runcmd
@@ -26,9 +27,11 @@ jobs:
           run: |
             uname -a
             echo ::set-output name=uname::$(uname -a)
+            mkdir flutter
             ls
 
       - name: Get the output
         # Echo the `uname` output parameter from the `runcmd` step
         run: |
           echo "The uname output was ${{ steps.runcmd.outputs.uname }}"
+          echo "${{ github.workspace }}"
