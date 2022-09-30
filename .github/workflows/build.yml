@@ -1,11 +1,11 @@
 name: Create Release
 on: 
-  - push
-  # workflow_dispatch:
-  #   inputs:
-  #     releasename:
-  #       description: Release Version
-  #       required: true
+  #- push
+  workflow_dispatch:
+    inputs:
+      releasename:
+        description: Release Version
+        required: true
 jobs:
   flutterbuild:
     runs-on: ubuntu-18.04
@@ -26,9 +26,7 @@ jobs:
           githubToken: ${{ github.token }}
 
           # Set an output parameter `uname` for use in subsequent steps
-          run: |
-            uname -a
-            echo ::set-output name=uname::$(uname -a)
+          run: |            
             apt -qq update >/dev/null
             apt install -y -qq git curl unzip clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev > /dev/null
             git clone --depth 1 https://github.com/flutter/flutter.git >/dev/null 2>/dev/null
@@ -36,10 +34,15 @@ jobs:
             which flutter dart
             cd code
             flutter build linux --release
-            
-
-      - name: Get the output
-        # Echo the `uname` output parameter from the `runcmd` step
-        run: |
-          echo "The uname output was ${{ steps.runcmd.outputs.uname }}"
-          echo "${{ github.workspace }}"
+      - uses: vimtor/action-zip@v1
+        with:
+          files: build/linux/release/bundle
+          dest: release.zip
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "release.zip"
+          body: ${{github.event.inputs.releasename}}
+          tag: ${{github.event.inputs.releasename}}
+          commit: "main"
+          token: ${{ secrets.GITHUB_TOKEN }}
