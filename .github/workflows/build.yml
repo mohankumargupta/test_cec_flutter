@@ -28,8 +28,13 @@ jobs:
           run: |
             uname -a
             echo ::set-output name=uname::$(uname -a)
-            mkdir flutter
-            ls
+            git clone --depth 1 https://github.com/flutter/flutter.git
+            export PATH="$PATH:`pwd`/flutter/bin"
+            flutter precache
+            which flutter dart
+            
+
+            
 
       - name: Get the output
         # Echo the `uname` output parameter from the `runcmd` step
