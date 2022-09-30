@@ -1,10 +1,11 @@
 name: Create Release
 on: 
-  workflow_dispatch:
-    inputs:
-      releasename:
-        description: Release Version
-        required: true
+  - push
+  # workflow_dispatch:
+  #   inputs:
+  #     releasename:
+  #       description: Release Version
+  #       required: true
 jobs:
   flutterbuild:
     runs-on: ubuntu-18.04
