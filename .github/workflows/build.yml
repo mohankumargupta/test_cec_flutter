@@ -11,7 +11,8 @@ jobs:
     name: Raspberry Pi aarch64 build
     steps:
       - uses: actions/checkout@v2.1.0
-        path: code
+        with:
+          path: code
       - uses: uraimo/run-on-arch-action@v2
         name: Run commands
         id: runcmd
