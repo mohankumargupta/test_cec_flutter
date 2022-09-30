@@ -33,8 +33,7 @@ jobs:
             export PATH="$PATH:`pwd`/flutter/bin"            
             which flutter dart
             cd code
-            flutter build linux --release
-            ls -l build/linux/            
+            flutter build linux --release                       
       - uses: vimtor/action-zip@v1
         with:
           files: code/build/linux/arm64/release/bundle
