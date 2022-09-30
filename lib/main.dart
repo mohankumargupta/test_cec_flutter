@@ -121,8 +121,20 @@ class _MyHomePageState extends State<MyHomePage> {
           const SingleActivator(LogicalKeyboardKey.backspace): () {
             _showKeyPress("BACKSPACE");
           },
-          const SingleActivator(LogicalKeyboardKey.tvContentsMenu): () {
-            _showKeyPress("TV CONTENTS MENU");
+          const SingleActivator(LogicalKeyboardKey.space): () {
+            _showKeyPress("SPACE");
+          },
+          const SingleActivator(LogicalKeyboardKey.colorF3Blue): () {
+            _showKeyPress("BLUE");
+          },
+          const SingleActivator(LogicalKeyboardKey.colorF2Yellow): () {
+            _showKeyPress("YELLOW");
+          },
+          const SingleActivator(LogicalKeyboardKey.colorF1Green): () {
+            _showKeyPress("GREEN");
+          },
+          const SingleActivator(LogicalKeyboardKey.colorF0Red): () {
+            _showKeyPress("BLUE");
           },
         },
         child: Focus(
