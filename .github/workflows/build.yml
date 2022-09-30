@@ -29,8 +29,7 @@ jobs:
             uname -a
             echo ::set-output name=uname::$(uname -a)
             git clone --depth 1 https://github.com/flutter/flutter.git
-            export PATH="$PATH:`pwd`/flutter/bin"
-            flutter precache
+            export PATH="$PATH:`pwd`/flutter/bin"            
             which flutter dart
             
 
