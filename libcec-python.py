@@ -103,7 +103,7 @@ class pyCecClient:
     
     elif key == cec.CEC_USER_CONTROL_CODE_F2_RED:
         print("RED")
-        self.sendKey(e.KEY_RED)
+        self.sendKey(e.KEY_PROG1)
 
     elif key == cec.CEC_USER_CONTROL_CODE_F3_GREEN:
         print("GREEN")
