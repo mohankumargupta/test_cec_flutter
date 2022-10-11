@@ -85,6 +85,9 @@ class _MyHomePageState extends State<MyHomePage> {
           const SingleActivator(LogicalKeyboardKey.enter): () {
             _showKeyPress("OK");
           },
+          const SingleActivator(LogicalKeyboardKey.exit): () {
+            _showKeyPress("EXIT");
+          },
           const SingleActivator(LogicalKeyboardKey.arrowUp): () {
             _showKeyPress("ARROW UP");
           },
@@ -114,9 +117,6 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           const SingleActivator(LogicalKeyboardKey.channelDown): () {
             _showKeyPress("CHANNEL DOWN");
-          },
-          const SingleActivator(LogicalKeyboardKey.exit): () {
-            _showKeyPress("EXIT");
           },
           const SingleActivator(LogicalKeyboardKey.tvContentsMenu): () {
             _showKeyPress("TV CONTENTS MENU");
@@ -150,31 +150,29 @@ class _MyHomePageState extends State<MyHomePage> {
           autofocus: true,
           child: Stack(children: [
             Center(
-              child: Expanded(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 100.0),
-                        child: Text("Last button pressed",
-                            style: TextStyle(
-                              fontSize: 48.0,
-                            )),
-                      ),
-                      Text(_keypress,
-                          style: const TextStyle(
-                            fontSize: 78.0,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold,
-                          ))
-                    ]),
-              ),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 100.0),
+                      child: Text("Last button pressed",
+                          style: TextStyle(
+                            fontSize: 48.0,
+                          )),
+                    ),
+                    Text(_keypress,
+                        style: const TextStyle(
+                          fontSize: 78.0,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                        ))
+                  ]),
             ),
             Align(
               alignment: Alignment.bottomLeft,
               child: Image.asset(
                 "assets/images/stolenremote.png",
-                scale: 0.8,
+                scale: 0.9,
               ),
             )
           ]),
