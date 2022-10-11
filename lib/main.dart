@@ -145,6 +145,9 @@ class _MyHomePageState extends State<MyHomePage> {
           const SingleActivator(LogicalKeyboardKey.colorF0Red): () {
             _showKeyPress("BLUE");
           },
+          const SingleActivator(LogicalKeyboardKey.close): () {
+            _showKeyPress("CLOSE");
+          },
         },
         child: Focus(
           autofocus: true,
