@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -49,7 +50,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _keypress = "";
+  String _keypress = "NONE";
 
   void _showKeyPress(String keypressed) {
     setState(() {
@@ -71,6 +72,14 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size(0, 200),
+        child: DecoratedBox(
+            decoration: BoxDecoration(color: Theme.of(context).primaryColor),
+            child: const Center(
+                child: Text("Remote Control Tester",
+                    style: TextStyle(color: Colors.white, fontSize: 48.0)))),
+      ),
       body: CallbackShortcuts(
         bindings: {
           const SingleActivator(LogicalKeyboardKey.enter): () {
@@ -139,7 +148,38 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         child: Focus(
           autofocus: true,
-          child: Column(
+          child: Stack(children: [
+            Center(
+              child: Expanded(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(bottom: 100.0),
+                        child: Text("Last button pressed",
+                            style: TextStyle(
+                              fontSize: 48.0,
+                            )),
+                      ),
+                      Text(_keypress,
+                          style: const TextStyle(
+                            fontSize: 78.0,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                          ))
+                    ]),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Image.asset(
+                "assets/images/stolenremote.png",
+                scale: 0.8,
+              ),
+            )
+          ]),
+          /*
+          Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               const Flexible(
@@ -173,6 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
+        */
         ),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
