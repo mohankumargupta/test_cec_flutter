@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:window_manager/window_manager.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await windowManager.ensureInitialized();
+  windowManager.waitUntilReadyToShow().then((_) async {
+    // Hide window title bar
+    //await windowManager.setTitleBarStyle(TitleBarStyle.hidden);
+    await windowManager.setSize(const Size(1920, 600));
+    //await windowManager.center();
+    await windowManager.show();
+    //await windowManager.setSkipTaskbar(false);
+  });
   runApp(const MyApp());
 }
 
@@ -180,6 +191,48 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           const SingleActivator(LogicalKeyboardKey.mediaRewind): () {
             _showKeyPress("REWIND");
+          },
+          const SingleActivator(LogicalKeyboardKey.digit0): () {
+            _showKeyPress("0");
+          },
+          const SingleActivator(LogicalKeyboardKey.digit1): () {
+            _showKeyPress("1");
+          },
+          const SingleActivator(LogicalKeyboardKey.digit2): () {
+            _showKeyPress("2");
+          },
+          const SingleActivator(LogicalKeyboardKey.digit3): () {
+            _showKeyPress("3");
+          },
+          const SingleActivator(LogicalKeyboardKey.digit4): () {
+            _showKeyPress("4");
+          },
+          const SingleActivator(LogicalKeyboardKey.digit5): () {
+            _showKeyPress("5");
+          },
+          const SingleActivator(LogicalKeyboardKey.digit6): () {
+            _showKeyPress("6");
+          },
+          const SingleActivator(LogicalKeyboardKey.digit7): () {
+            _showKeyPress("7");
+          },
+          const SingleActivator(LogicalKeyboardKey.digit8): () {
+            _showKeyPress("8");
+          },
+          const SingleActivator(LogicalKeyboardKey.digit9): () {
+            _showKeyPress("9");
+          },
+          const SingleActivator(LogicalKeyboardKey.f1): () {
+            _showKeyPress("F1");
+          },
+          const SingleActivator(LogicalKeyboardKey.f2): () {
+            _showKeyPress("F2");
+          },
+          const SingleActivator(LogicalKeyboardKey.f3): () {
+            _showKeyPress("F3");
+          },
+          const SingleActivator(LogicalKeyboardKey.f4): () {
+            _showKeyPress("F4");
           },
         },
         child: Focus(
