@@ -21,8 +21,7 @@ class pyCecClient:
 
   def SetConfiguration(self):
     self.cecconfig.strDeviceName   = "pyLibCec"
-    #self.cecconfig.bActivateSource = 0
-    self.cecconfig.bActivateSource = 1
+    self.cecconfig.bActivateSource = 0
     self.cecconfig.deviceTypes.Add(cec.CEC_DEVICE_TYPE_RECORDING_DEVICE)
     self.cecconfig.deviceTypes.Add(cec.CEC_DEVICE_TYPE_PLAYBACK_DEVICE)
     self.cecconfig.deviceTypes.Add(cec.CEC_DEVICE_TYPE_TUNER)
@@ -75,80 +74,9 @@ class pyCecClient:
         print("PLAY")
         self.sendKey(e.KEY_PLAY)
 
-    elif key == cec.CEC_USER_CONTROL_CODE_STOP:
-        print("STOP")
-        self.sendKey(e.KEY_STOP)
-
-    elif key == cec.CEC_USER_CONTROL_CODE_PAUSE:
-        print("PAUSE")
-        self.sendKey(e.KEY_PAUSE)
-
     elif key == cec.CEC_USER_CONTROL_CODE_SELECT:
         print("OK")
         self.sendKey(e.KEY_ENTER)
-
-    elif key == cec.CEC_USER_CONTROL_CODE_NUMBER0:
-        print("0")
-        self.sendKey(e.KEY_0)
-
-
-    elif key == cec.CEC_USER_CONTROL_CODE_NUMBER1:
-        print("1")
-        self.sendKey(e.KEY_1)
-
-    elif key == cec.CEC_USER_CONTROL_CODE_NUMBER2:
-        print("2")
-        self.sendKey(e.KEY_2)
-
-
-    elif key == cec.CEC_USER_CONTROL_CODE_NUMBER3:
-        print("3")
-        self.sendKey(e.KEY_3)
-
-    elif key == cec.CEC_USER_CONTROL_CODE_NUMBER4:
-        print("4")
-        self.sendKey(e.KEY_4)
-
-
-    elif key == cec.CEC_USER_CONTROL_CODE_NUMBER5:
-        print("5")
-        self.sendKey(e.KEY_5)
-
-    elif key == cec.CEC_USER_CONTROL_CODE_NUMBER6:
-        print("6")
-        self.sendKey(e.KEY_6)
-
-
-    elif key == cec.CEC_USER_CONTROL_CODE_NUMBER7:
-        print("7")
-        self.sendKey(e.KEY_7)
-
-    elif key == cec.CEC_USER_CONTROL_CODE_NUMBER8:
-        print("8")
-        self.sendKey(e.KEY_8)
-
-
-    elif key == cec.CEC_USER_CONTROL_CODE_NUMBER9:
-        print("9")
-        self.sendKey(e.KEY_9)
-
-    elif key == cec.CEC_USER_CONTROL_CODE_REWIND:
-        print("REWIND")
-        self.sendKey(e.KEY_REWIND)
-
-    elif key == cec.CEC_USER_CONTROL_CODE_FAST_FORWARD:
-        print("FAST FORWARD")
-        self.sendKey(e.KEY_FASTFORWARD)
-
-
-    elif key == cec.CEC_USER_CONTROL_CODE_FORWARD:
-        print("FORWARD")
-        self.sendKey(e.KEY_FORWARD)
-
-
-    elif key == cec.CEC_USER_CONTROL_CODE_BACKWARD:
-        print("BACKWARD")
-        self.sendKey(e.KEY_FASTREVERSE)
 
     elif key == cec.CEC_USER_CONTROL_CODE_ROOT_MENU:
         print("ROOT MENU")
@@ -175,7 +103,7 @@ class pyCecClient:
     
     elif key == cec.CEC_USER_CONTROL_CODE_F2_RED:
         print("RED")
-        self.sendKey(e.KEY_RED)
+        self.sendKey(e.KEY_PROG1)
 
     elif key == cec.CEC_USER_CONTROL_CODE_F3_GREEN:
         print("GREEN")
@@ -211,7 +139,7 @@ class pyCecClient:
         print("No adapters found")
     else:
         if self.lib.Open(adapter):
-            print(f"connection opened: {adapter}")
+            print("connection opened")
             while True:
                 pass
         else:

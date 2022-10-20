@@ -148,6 +148,39 @@ class _MyHomePageState extends State<MyHomePage> {
           const SingleActivator(LogicalKeyboardKey.close): () {
             _showKeyPress("CLOSE");
           },
+          const SingleActivator(LogicalKeyboardKey.play): () {
+            _showKeyPress("PLAY");
+          },
+          const SingleActivator(LogicalKeyboardKey.mediaStop): () {
+            _showKeyPress("STOP");
+          },
+          const SingleActivator(LogicalKeyboardKey.pause): () {
+            _showKeyPress("PAUSE");
+          },
+          const SingleActivator(LogicalKeyboardKey.mediaPause): () {
+            _showKeyPress("MEDIA PAUSE");
+          },
+          const SingleActivator(LogicalKeyboardKey.mediaPlayPause): () {
+            _showKeyPress("MEDIA PLAY PAUSE");
+          },
+          const SingleActivator(LogicalKeyboardKey.browserForward): () {
+            _showKeyPress("BROWSER FORWARD");
+          },
+          const SingleActivator(LogicalKeyboardKey.mediaFastForward): () {
+            _showKeyPress("FAST FORWARD");
+          },
+          const SingleActivator(LogicalKeyboardKey.mediaSkipForward): () {
+            _showKeyPress("SKIP FORWARD");
+          },
+          const SingleActivator(LogicalKeyboardKey.mediaStepForward): () {
+            _showKeyPress("STEP FORWARD");
+          },
+          const SingleActivator(LogicalKeyboardKey.mediaSkipBackward): () {
+            _showKeyPress("SKIP BACKWARD");
+          },
+          const SingleActivator(LogicalKeyboardKey.mediaRewind): () {
+            _showKeyPress("REWIND");
+          },
         },
         child: Focus(
           autofocus: true,
