@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size(0, 200),
+        preferredSize: const Size(0, 300),
         child: DecoratedBox(
             decoration: BoxDecoration(color: Theme.of(context).primaryColor),
             child: const Center(
