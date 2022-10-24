@@ -6,12 +6,12 @@ import 'package:window_manager/window_manager.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
+  await windowManager.hide();
   windowManager.waitUntilReadyToShow().then((_) async {
     // Hide window title bar
     //await windowManager.setTitleBarStyle(TitleBarStyle.hidden);
-    await windowManager.hide();
-    await windowManager.setSize(const Size(1920, 600));
-    await windowManager.setAlignment(Alignment.topRight);
+    await windowManager.setSize(const Size(1920, 1080));
+    await windowManager.setAlignment(Alignment.topLeft);
     //await windowManager.center();
     await windowManager.show();
     //await windowManager.setSkipTaskbar(false);
