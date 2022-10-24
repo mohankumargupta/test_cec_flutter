@@ -66,10 +66,22 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String _keypress = "NONE";
   final player = AudioPlayer();
+  static AudioCache audioCache = AudioCache(prefix: 'assets/sounds/');
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      player.audioCache = audioCache;
+      await player.setSource(AssetSource("mouseclick.mp3"));
+      // alternative to playListSilently
+    });
+  }
 
   void _showKeyPress(String keypressed) async {
-    await player.play(AssetSource("sounds/mouseclick.mp3"));
-    
+    await player.seek(Duration.zero);
+    await player.play(AssetSource("mouseclick.mp3"));
+
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -105,11 +117,11 @@ class _MyHomePageState extends State<MyHomePage> {
           const SingleActivator(LogicalKeyboardKey.exit): () {
             _showKeyPress("EXIT");
           },
-          const SingleActivator(LogicalKeyboardKey.arrowUp): ()   {
-             _showKeyPress("ARROW UP");
+          const SingleActivator(LogicalKeyboardKey.arrowUp): () {
+            _showKeyPress("ARROW UP");
           },
-          const SingleActivator(LogicalKeyboardKey.arrowDown):  ()  {
-             _showKeyPress("ARROW DOWN");
+          const SingleActivator(LogicalKeyboardKey.arrowDown): () {
+            _showKeyPress("ARROW DOWN");
           },
           const SingleActivator(LogicalKeyboardKey.arrowLeft): () {
             _showKeyPress("ARROW LEFT");
