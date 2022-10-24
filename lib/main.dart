@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:window_manager/window_manager.dart';
@@ -8,7 +9,9 @@ void main() async {
   windowManager.waitUntilReadyToShow().then((_) async {
     // Hide window title bar
     //await windowManager.setTitleBarStyle(TitleBarStyle.hidden);
+    await windowManager.hide();
     await windowManager.setSize(const Size(1920, 600));
+    await windowManager.setAlignment(Alignment.topRight);
     //await windowManager.center();
     await windowManager.show();
     //await windowManager.setSkipTaskbar(false);
@@ -62,8 +65,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String _keypress = "NONE";
+  final player = AudioPlayer();
 
-  void _showKeyPress(String keypressed) {
+  void _showKeyPress(String keypressed) async {
+    await player.play(AssetSource("sounds/mouseclick.mp3"));
+    
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -99,11 +105,11 @@ class _MyHomePageState extends State<MyHomePage> {
           const SingleActivator(LogicalKeyboardKey.exit): () {
             _showKeyPress("EXIT");
           },
-          const SingleActivator(LogicalKeyboardKey.arrowUp): () {
-            _showKeyPress("ARROW UP");
+          const SingleActivator(LogicalKeyboardKey.arrowUp): ()   {
+             _showKeyPress("ARROW UP");
           },
-          const SingleActivator(LogicalKeyboardKey.arrowDown): () {
-            _showKeyPress("ARROW DOWN");
+          const SingleActivator(LogicalKeyboardKey.arrowDown):  ()  {
+             _showKeyPress("ARROW DOWN");
           },
           const SingleActivator(LogicalKeyboardKey.arrowLeft): () {
             _showKeyPress("ARROW LEFT");

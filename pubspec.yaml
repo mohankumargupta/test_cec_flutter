@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   window_manager: ^0.2.7
+  audioplayers: ^1.1.1 # sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -63,6 +64,7 @@ flutter:
   assets:
     - assets/images/samsung-remote.png
     - assets/images/stolenremote.png
+    - assets/sounds/mouseclick.mp3
 
   # To add assets to your application, add an assets section, like this:
   # assets:
